@@ -1,2 +1,2 @@
 # risidom
-application affichant des mêmes aléatoires hébergés sur [noelshack](risibank.fr)
+application affichant des mêmes aléatoires hébergés sur [noelshack](https://risibank.fr)
