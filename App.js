@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, Component } from 'react';
 import { Alert, Button, StyleSheet, Text, View, Image, Platform, Linking, TouchableOpacity } from 'react-native';
+
 function images_risitas(n) {
   if(n==1) {
     var liste_risitas = ["2016/24/1466366209-risitas24.png",
@@ -50,11 +51,15 @@ function images_risitas(n) {
     "2017/20/1495053127-paslebol.png",
     "2017/21/1495904912-58489651.png",
     "2017/19/1494361873-luckylarry.png",
-    "2021/13/4/1617273168-lary-cigare-3.jpg"];
+    "2021/13/4/1617273168-lary-cigare-3.jpg",
+    "2017/20/1495044304-1485484836-larry.png",
+    "2017/20/1494946963-larryrsa.png",
+    "2017/20/1494946943-larryhome.png"];
     var x = Math.floor((Math.random() * liste_larry.length));
     return(liste_larry[x]);
   }
 }
+
 
 export default class App extends Component {
   constructor() {
@@ -85,12 +90,21 @@ export default class App extends Component {
           source={{uri: this.state.imageURL}}
           style={{width: 360, height: 300}}
         />
-        <Button color="black" title={this.state.imageURL} onPress={ ()=> Linking.openURL(this.state.imageURL)}/>
-        <Button color="red" title="Risitas" onPress={this.Load_New_Image_Risitas}/>
-        <Button color="red" title="Zemmour" onPress={this.Load_New_Image_Zemmour}/>
-        <Button color="red" title="Larry chance" onPress={this.Load_New_Image_Larry}/>
+        <TouchableOpacity style={styles.buttonLink} onPress={ ()=> Linking.openURL(this.state.imageURL)}>
+          <Text style={styles.textButton}>{this.state.imageURL}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={this.Load_New_Image_Risitas}>
+          <Text style={styles.textButton}>Risitas</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={this.Load_New_Image_Zemmour}>
+          <Text style={styles.textButton}>Zemmour</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={this.Load_New_Image_Larry}>
+          <Text style={styles.textButton}>Larry Chance</Text>
+        </TouchableOpacity>
         <StatusBar style="auto" />
      </View>
+
     );
   }    
 }
@@ -104,14 +118,27 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    fontWeight: 'bold',
-    height: 20,
     fontSize: 10,
     marginBottom: 20,
     textAlign: 'center',
   },
   button: {
     marginBottom: 10,
+    backgroundColor: "#191919",
+    alignItems: "center",
+  },
+  textButton: {
+    justifyContent: "center",
+    color: "white",
+    padding: 10,
+    fontSize: 20,
+  },
+  buttonLink: {
+    height: 100,
+    fontSize: 10,
+    color: "white",
+    justifyContent: "center",
+    textAlign: "center",
   },
 });
 
